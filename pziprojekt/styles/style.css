@@ -1,0 +1,376 @@
+/* General styles */
+body {
+    background: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+/* Header styling */
+header {
+    background-color: #2c3e50;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    margin-left: 1210px;
+    max-width: 50px;
+}
+
+/* Navigation link styling */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: bold;
+}
+
+/* Main section styling */
+main {
+    padding: 10px;
+    flex: 1;
+}
+
+/* Controls section styling */
+#controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Calendar styling */
+#calendar-container {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.calendar-header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.calendar-nav {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.calendar-nav:hover {
+    background: #0056b3;
+}
+
+.calendar-days,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.day-cell {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.day-cell:hover {
+    background: #e67e22;
+    color: white;
+}
+
+.selected-date {
+    background: #007bff;
+    color: white;
+}
+
+/* Buttons */
+.primary-btn {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin: 20px auto;
+}
+
+.primary-btn:hover {
+    background: #0056b3;
+}
+
+/* Event Cards */
+#events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.card{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-thumbnail {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.delete-event {
+    background: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-event:hover {
+    background: #a71d2a;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.modal-content label {
+    font-weight: bold;
+    margin: 8px 0 4px;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.modal-content button {
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.modal-content button:hover {
+    background: #0056b3;
+}
+
+.modal-content .error-message {
+    display: none;
+    color: red;
+    margin-top: 8px;
+    text-align: center;
+}
+
+#add-event-link {
+    text-decoration: none;
+    color: white;
+}
+
+.calendar-header2 {
+    background-color: #2c3e50;
+}
+
+.calendar-current-date1,
+.calendar-current-date2 {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.calendar-container {
+    background: white;
+    width: 350px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    margin-top: 5%;
+}
+
+.calendar-container .calendar-header2 {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.calendar-navigation1 i,
+.calendar-navigation2 i {
+    width: 30px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.calendar-navigation1 i:hover,
+.calendar-navigation2 i:hover {
+    color: cornflowerblue;
+}
+
+.calendar-current-date1,
+.calendar-current-date2 {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.calendar-body {
+    padding: 5px;
+}
+
+.calendar-body ul {
+    list-style: none;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+}
+
+.calendar-body .calendar-dates1,
+.calendar-body .calendar-dates2 {
+    margin-bottom: 5px;
+}
+
+.calendar-body li {
+    width: calc(100% / 7);
+    font-size: 0.7rem;
+    color: black;
+}
+
+.calendar-body .calendar-weekdays li {
+    cursor: default;
+    font-weight: 200;
+}
+
+.calendar-body .calendar-dates1 li,
+.calendar-body .calendar-dates2 li {
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.calendar-dates1 li.inactive,
+.calendar-dates2 li.inactive {
+    color: white;
+}
+
+.calendar-dates1 li.active,
+.calendar-dates2 li.active {
+    color: white;
+}
+
+.calendar-dates1 li.activeInput,
+.calendar-dates2 li.activeInput {
+    color: white;
+}
+
+.calendar-dates1 li::before,
+.calendar-dates2 li::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar-dates1 li.active::before,
+.calendar-dates2 li.active::before {
+    background-color: #007bff;
+}
+
+.calendar-dates1 li.activeInput::before,
+.calendar-dates2 li.activeInput::before {
+    background-color: cornflowerblue;
+}
+
+.calendar-dates1 li:not(.active):hover::before,
+.calendar-dates2 li:not(.active):hover::before {
+    background-color: lightblue;
+}
+
+#cards-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 5% 5%;
+}
+
+#dateText1,
+#dateText2 {
+    margin-left: 100px;
+}
+
+#inputs,
+#calendars {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    row-gap: 10px;
+    justify-items: center;
+}
+
+.main-header-text {
+    text-align: center;
+    margin-bottom: -20px;
+}

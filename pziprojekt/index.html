@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Admin Panel</title>
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="./pages/addEvent.html">Add event</a>
+            <a href="index.html"> <img id="fesb-logo" src="images/fesb-logo.png" alt="fesb logo image" /> </a>
+        </nav>
+    </header>
+    <main>
+        <section id="controls">
+            <input id="search-box" type="text" placeholder="Search events">
+            <select id="location-filter">
+                <option value="all">All Locations</option>
+            </select>
+        </section>
+        <section id="calendar-section">
+            <div id="calendar-container"></div>
+        </section>
+        <button class="primary-btn"> <a id="add-event-link" href="./pages/addEvent.html">Add
+                Event</a> </button>
+
+        <div id="events-container"></div>
+    </main>
+    <footer>
+        <p>Event Management © 2025</p>
+    </footer>
+    <script src="./scripts/calendar.js"></script>
+    <script src="./scripts/search.js"></script>
+    <script src="./scripts/thumbnails.js"></script>
+</body>
+
+</html>

@@ -23,7 +23,7 @@ header {
 }
 
 header img {
-    margin-left: 1210px;
+    margin-left: 1230px;
     max-width: 50px;
 }
 
@@ -59,7 +59,7 @@ footer {
     width: 100%;
 }
 
-/* Calendar styling */
+/* Home calendar styling */
 #calendar-container {
     background: white;
     border-radius: 10px;
@@ -131,6 +131,25 @@ footer {
     background: #0056b3;
 }
 
+.delete-event {
+    background: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-event:hover {
+    background: #a71d2a;
+}
+
+#add-event-link {
+    text-decoration: none;
+    color: white;
+}
+
 /* Event Cards */
 #events-container {
     display: grid;
@@ -151,80 +170,20 @@ footer {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Thumbnails */
 .event-thumbnail {
     width: 100%;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.delete-event {
-    background: #dc3545;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.delete-event:hover {
-    background: #a71d2a;
-}
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-content h2 {
+/* Add event header text styling */
+.main-header-text {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: -20px;
 }
 
-.modal-content label {
-    font-weight: bold;
-    margin: 8px 0 4px;
-}
-
-.modal-content input[type="text"],
-.modal-content textarea,
-.modal-content input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.modal-content button {
-    background: #007bff;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-.modal-content button:hover {
-    background: #0056b3;
-}
-
-.modal-content .error-message {
-    display: none;
-    color: red;
-    margin-top: 8px;
-    text-align: center;
-}
-
-#add-event-link {
-    text-decoration: none;
-    color: white;
-}
-
+/* Add event calendar styling */
 .calendar-header2 {
     background-color: #2c3e50;
 }
@@ -362,15 +321,11 @@ footer {
     margin-left: 100px;
 }
 
+/* Add event inputs styling */
 #inputs,
 #calendars {
     display: grid;
     grid-template-columns: 2fr 2fr;
     row-gap: 10px;
     justify-items: center;
-}
-
-.main-header-text {
-    text-align: center;
-    margin-bottom: -20px;
 }

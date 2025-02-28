@@ -114,7 +114,7 @@ function filterEventsByDate() {
     
     if (!selectedStartDate && !selectedEndDate) {
         // If no date is selected, show all events
-        events.forEach(event => renderEventCal(event));
+        events.forEach(event => renderEvent(event));
     } else {
         events.forEach(event => {
             const eventStartDate = new Date(event.startDate).toLocaleString().split(",")[0];
@@ -124,16 +124,16 @@ function filterEventsByDate() {
                 && (selectedStartDate <= eventStartDate)
                 && (selectedEndDate >= eventEndDate)
             ){
-                renderEventCal(event);
+                renderEvent(event);
             }
             else if(selectedStartDate
                 && (selectedStartDate == eventStartDate)
                 && (selectedStartDate == eventEndDate)){
-                    renderEventCal(event);
+                    renderEvent(event);
             }
             else if(selectedStartDate && !selectedEndDate
                 && (selectedStartDate == eventStartDate)){
-                    renderEventCal(event);
+                    renderEvent(event);
             }
             else if((selectedStartDate && selectedEndDate
                     && (selectedStartDate <= eventStartDate)
@@ -145,7 +145,8 @@ function filterEventsByDate() {
     }
 }
 
-function renderEventCal(event) {
+// Function to render event cards dynamically
+function renderEvent(event) {
     const cardsContainer = document.getElementById("events-container");
 
     const card = document.createElement("div");
@@ -165,6 +166,7 @@ function renderEventCal(event) {
     cardsContainer.appendChild(card);
 }
 
+// Function to render all events
 function RenderAllEvents(){
     const events = JSON.parse(localStorage.getItem("events"));
 
@@ -174,7 +176,7 @@ function RenderAllEvents(){
     console.log(events);
 
     if(events){
-        events.forEach(event => renderEventCal(event));
+        events.forEach(event => renderEvent(event));
     }else{
         cardsContainer.innerHTML = `<p> No events. <p>`
     }

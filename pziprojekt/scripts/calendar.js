@@ -103,44 +103,52 @@ function changeMonth(direction) {
         currentYear++; // Increase the year
     }
     createCalendar(currentYear, currentMonth); // Re-create the calendar with the new month and year
+    assingFilteringButtonsToCalendar();
 }
 
 
 // Function to filter events based on selected dates
 function filterEventsByDate() {
+    console.log(selectedStartDate, selectedEndDate);
+    const nonStringSelectedStartDate = !selectedStartDate ? null : new Date(selectedStartDate);
+    const nonStringSelectedEndDate = !selectedEndDate ? null : new Date(selectedEndDate);
+
     const events = JSON.parse(localStorage.getItem("events")) || [];
     const cardsContainer = document.getElementById("events-container");
     cardsContainer.innerHTML  = "";
-    
-    if (!selectedStartDate && !selectedEndDate) {
-        // If no date is selected, show all events
-        events.forEach(event => renderEventCal(event));
-    } else {
+
+    if (nonStringSelectedStartDate && nonStringSelectedEndDate) {
         events.forEach(event => {
-            const eventStartDate = new Date(event.startDate).toLocaleString().split(",")[0];
-            const eventEndDate = new Date(event.endDate).toLocaleString().split(",")[0];
-            
-            if( (selectedStartDate && selectedEndDate)
-                && (selectedStartDate <= eventStartDate)
-                && (selectedEndDate >= eventEndDate)
-            ){
+            const eventStartDate = new Date(event.startDate);
+            const eventEndDate = new Date(event.endDate);
+
+            if (nonStringSelectedStartDate == eventStartDate && nonStringSelectedStartDate == eventEndDate) {
                 renderEventCal(event);
             }
-            else if(selectedStartDate
-                && (selectedStartDate == eventStartDate)
-                && (selectedStartDate == eventEndDate)){
-                    renderEventCal(event);
+
+            else if (nonStringSelectedStartDate <= eventStartDate && nonStringSelectedEndDate >= eventEndDate) {
+                renderEventCal(event);
             }
-            else if(selectedStartDate && !selectedEndDate
-                && (selectedStartDate == eventStartDate)){
-                    renderEventCal(event);
+
+            else if (nonStringSelectedStartDate && !nonStringSelectedEndDate && (nonStringSelectedEndDate == eventStartDate)) {
+                renderEventCal(event);
             }
-            else if((selectedStartDate && selectedEndDate
-                    && (selectedStartDate <= eventStartDate)
-                    && (selectedEndDate != eventEndDate)
-            )){
-                cardsContainer.innerHTML = `<p> No events in selected date range. <p>`
+            else{
+                count++;
             }
+        });
+        if (count == events.length)cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
+    } 
+    else if (nonStringSelectedStartDate) {
+        events.forEach(event => {
+            const eventEndDate = new Date(event.endDate);
+            if (nonStringSelectedStartDate <= eventEndDate)
+                renderEventCal(event);
+        });
+    }
+    else {
+        events.forEach(event => {
+            renderEventCal(event);
         });
     }
 }
@@ -168,26 +176,31 @@ function renderEventCal(event) {
 function RenderAllEvents(){
     const events = JSON.parse(localStorage.getItem("events"));
 
-    const cardsContainer = document.getElementById("events-container");
+const cardsContainer = document.getElementById("events-container");
+
     cardsContainer.innerHTML  = "";
 
-    console.log(events);
 
-    if(events){
+if (!events) {
+ cardsContainer.innerHTML = `<p> No events. <p>`;
+
+return;
+}
+    console.log(events);
         events.forEach(event => renderEventCal(event));
-    }else{
-        cardsContainer.innerHTML = `<p> No events. <p>`
-    }
+}
+
+function assingFilteringButtonsToCalendar() {
+    const wantedDate1 = document.querySelectorAll(".calendar-grid");
+    
+    wantedDate1.forEach((element) => {
+        console.log("Test");
+        element.addEventListener("click", filterEventsByDate);
+    });
 }
 
 createCalendar(currentYear, currentMonth);
-
-const wantedDate1 = document.querySelectorAll(".calendar-grid");
-
-wantedDate1.forEach((element) => {
-    element.addEventListener("click", filterEventsByDate);
-  });
-
+assingFilteringButtonsToCalendar();
 RenderAllEvents();
 
 const cards = document.querySelectorAll(".card");

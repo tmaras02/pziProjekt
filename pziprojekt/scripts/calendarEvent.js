@@ -32,7 +32,7 @@ const months = [
 
 // Function to generate the calendar, function manipulate2 is same but for generating second calendar
 // through a file functions are duplicated in a way that all functions 1 manipulate with calendar1 and
-// functions 2 manipulate with calendar 2
+// functions to manipulate with calendar 2
 const manipulate1 = () => {
   let dayone = new Date(year1, month1, 1).getDay();
 

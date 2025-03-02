@@ -118,6 +118,7 @@ function filterEventsByDate() {
     cardsContainer.innerHTML  = "";
 
     if (nonStringSelectedStartDate && nonStringSelectedEndDate) {
+        let count = 0;
         events.forEach(event => {
             const eventStartDate = new Date(event.startDate);
             const eventEndDate = new Date(event.endDate);
@@ -133,18 +134,26 @@ function filterEventsByDate() {
             else if (nonStringSelectedStartDate && !nonStringSelectedEndDate && (nonStringSelectedEndDate == eventStartDate)) {
                 renderEventCal(event);
             }
-            else{
+
+            else {
                 count++;
             }
+
         });
-        if (count == events.length)cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
+        if (count == events.length)
+            cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
     } 
     else if (nonStringSelectedStartDate) {
+        let count = 0;
         events.forEach(event => {
             const eventEndDate = new Date(event.endDate);
             if (nonStringSelectedStartDate <= eventEndDate)
                 renderEventCal(event);
+            else
+                count++;
         });
+        if (count === events.length)
+            cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
     }
     else {
         events.forEach(event => {
@@ -175,19 +184,13 @@ function renderEventCal(event) {
 
 function RenderAllEvents(){
     const events = JSON.parse(localStorage.getItem("events"));
-
-const cardsContainer = document.getElementById("events-container");
-
-    cardsContainer.innerHTML  = "";
-
-
-if (!events) {
- cardsContainer.innerHTML = `<p> No events. <p>`;
-
-return;
-}
+    const cardsContainer = document.getElementById("events-container");
+    cardsContainer.innerHTML = '';
+    if (events.length === 0) {
+        cardsContainer.innerHTML = `<p> No events. <p>`;
+    }
     console.log(events);
-        events.forEach(event => renderEventCal(event));
+    events.forEach(event => renderEventCal(event));
 }
 
 function assingFilteringButtonsToCalendar() {
@@ -214,7 +217,10 @@ if(cards){
 // Function to delete an event
 function deleteEvent(title) {
     const events = JSON.parse(localStorage.getItem("events")) || [];
-    const updatedEvents = events.filter(event => event.title !== title);
-    localStorage.setItem("events", JSON.stringify(updatedEvents));
+    const indexOfDeletedElement = events.findIndex(el => el.title === title);
+    if (indexOfDeletedElement !== -1) {
+        events.splice(indexOfDeletedElement, 1);
+    }
+    localStorage.setItem("events", JSON.stringify(events));
     RenderAllEvents();
 }

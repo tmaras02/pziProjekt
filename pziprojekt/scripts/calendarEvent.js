@@ -148,8 +148,16 @@ prenexIcons1.forEach((icon) => {
         const inputDate = `${element.innerText} ${monthAndYear.innerText}`;
 
         // starting date is added to inputDates array which collect a inputed dates
-        inputDatesArray[0] = inputDate;
-        element.classList = "activeInput day2";
+        const date1 = parseDateString(inputDate); 
+        const date2 = parseDateString(inputDatesArray[1]);
+
+        if(inputDatesArray[1] && (date1 > date2)){
+          alert("End date should be larger than start date!");
+          console.log(inputDatesArray);
+        }else{
+          inputDatesArray[0] = inputDate;
+          element.classList = "activeInput day1";
+        }
       });
     });
   });
@@ -193,7 +201,7 @@ prenexIcons2.forEach((icon) => {
         const date3 = parseDateString(inputDatesArray[0]);
 
         if (date0 < date3) {
-          window.alert("Second date should be larger than first!");
+          window.alert("End date should be larger than start date!");
         } else {
           inputDatesArray[1] = inputDate;
           element.classList = "activeInput day2";
@@ -217,8 +225,16 @@ wantedDate1.forEach((element) => {
 
     const inputDate = `${element.innerText} ${monthAndYear.innerText}`;
 
-    inputDatesArray[0] = inputDate;
-    element.classList = "activeInput day1";
+    const date1 = parseDateString(inputDate); 
+        const date2 = parseDateString(inputDatesArray[1]);
+
+        if(inputDatesArray[1] && (date1 > date2)){
+          alert("End date should be larger than start date!");
+          console.log(inputDatesArray);
+        }else{
+          inputDatesArray[0] = inputDate;
+          element.classList = "activeInput day1";
+        }
   });
 });
 

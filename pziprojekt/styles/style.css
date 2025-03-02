@@ -105,12 +105,17 @@ footer {
 }
 
 .day-cell:hover {
-    background: #e67e22;
+    background: lightblue;
+    color: white;
+}
+
+#active {
+    background-color: #007bff;
     color: white;
 }
 
 .selected-date {
-    background: #007bff;
+    background: cornflowerblue;
     color: white;
 }
 

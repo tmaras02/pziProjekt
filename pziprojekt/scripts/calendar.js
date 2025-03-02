@@ -54,6 +54,12 @@ function renderDays(year, month) {
         dayCell.textContent = day;
         dayCell.className = "day-cell";
 
+        let isToday = (day === new Date().getDate()) 
+                    && (month === new Date().getMonth()) 
+                    && (year === new Date().getFullYear())
+                    ? "active" : "";
+        dayCell.id = `${isToday}`;
+
         // Format the current date for comparison with selected dates
         const currentDate = new Date(year, month, day).toLocaleString().split(",")[0];
         if (currentDate === selectedStartDate || currentDate === selectedEndDate) {
@@ -118,7 +124,6 @@ function filterEventsByDate() {
     cardsContainer.innerHTML  = "";
 
     if (nonStringSelectedStartDate && nonStringSelectedEndDate) {
-        let count = 0;
         events.forEach(event => {
             const eventStartDate = new Date(event.startDate);
             const eventEndDate = new Date(event.endDate);
@@ -134,26 +139,18 @@ function filterEventsByDate() {
             else if (nonStringSelectedStartDate && !nonStringSelectedEndDate && (nonStringSelectedEndDate == eventStartDate)) {
                 renderEventCal(event);
             }
-
-            else {
+            else{
                 count++;
             }
-
         });
-        if (count == events.length)
-            cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
+        if (count == events.length)cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
     } 
     else if (nonStringSelectedStartDate) {
-        let count = 0;
         events.forEach(event => {
             const eventEndDate = new Date(event.endDate);
             if (nonStringSelectedStartDate <= eventEndDate)
                 renderEventCal(event);
-            else
-                count++;
         });
-        if (count === events.length)
-            cardsContainer.innerHTML = `<p> No events in selected date range. <p>`;
     }
     else {
         events.forEach(event => {
